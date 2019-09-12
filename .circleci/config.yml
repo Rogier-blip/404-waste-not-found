@@ -12,7 +12,8 @@ jobs:
 
       - run:
           command: |
-          ## command to build the client
+            cd frontend
+            npm run build
 
 
   build-server:
