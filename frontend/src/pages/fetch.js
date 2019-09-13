@@ -17,7 +17,7 @@ class Fetch extends Component {
     // This data is fetched at run time on the client.
     fetchRicksPupper = () => {
         this.setState({loading: true});
-
+        // TODO: for the demo 'localhost' should be replace with the url of the machine
         axios
             .get(`http://localhost:3000/`)
             .then(request => {
