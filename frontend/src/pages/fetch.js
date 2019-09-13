@@ -1,5 +1,5 @@
-import React, {Component} from "react"
-import axios from "axios"
+import React, {Component} from 'react';
+import axios from 'axios';
 
 class Fetch extends Component {
     state = {
@@ -14,7 +14,6 @@ class Fetch extends Component {
         this.fetchRicksPupper()
     }
 
-    // This data is fetched at run time on the client.
     fetchRicksPupper = () => {
         this.setState({loading: true});
         // TODO: for the demo 'localhost' should be replace with the url of the machine
