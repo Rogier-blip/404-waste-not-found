@@ -17,9 +17,6 @@ services:
   mongodb:
     container_name: jumbo-hackaton-mongo-db
     image: mongo:4.1
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=example
     volumes:
       - jumbo-hackaton-volume:/data/db
       - jumbo-hackaton-volume:/data/configdb
