@@ -1,0 +1,7 @@
+{
+  "name": "express-starter",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "docker-compose build && docker-compose up -d"
+  }
+}
