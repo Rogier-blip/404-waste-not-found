@@ -44,7 +44,6 @@ class Scanner extends Component {
     if (result) {
       Quagga.offDetected(this._onDetected);
     }
-    // this.props.onDetected(result);
   }
 
 
