@@ -1,5 +1,9 @@
-import { IUser } from '../interfaces/IUser';
+import { IUser } from "../interfaces/IUser";
 
 export class User implements IUser {
-  constructor(public email: string) { }
+  constructor(
+    public firstName: string,
+    public lastName: string,
+    public gronies: Number
+  ) {}
 }

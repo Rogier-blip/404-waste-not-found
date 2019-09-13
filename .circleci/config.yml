@@ -16,7 +16,6 @@ jobs:
             npm install
             npm run build
 
-
   build-server:
     docker:
       - image: circleci/node:11
