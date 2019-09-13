@@ -13,6 +13,7 @@ jobs:
       - run:
           command: |
             cd frontend
+            npm install
             npm run build
 
 
@@ -28,7 +29,9 @@ jobs:
 
       - run: |
         command: |
-        ## command to build the server
+          cd backend
+          npm install
+          npm run build
 
 workflows:
   version: 2
