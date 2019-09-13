@@ -12,6 +12,7 @@ class ScanProductComponent extends Component {
     this._onDetected = this._onDetected.bind(this)
   }
   _scan() {
+    console.log("mpike scan")
     this.setState({ scanning: !this.state.scanning })
   }
   _onDetected(result) {
@@ -25,7 +26,9 @@ class ScanProductComponent extends Component {
         <button onClick={this._scan}>
           {this.state.scanning ? "Stop" : "Start"}
         </button>
-        <p>{this.state.results}</p>
+        <ul className="results">
+          {this.state.results.map((result) => (<Result key={result.codeResult.code} result={result} />))}
+        </ul>
         {this.state.scanning ? (
           <Scanner onDetected={this.state._onDetected} />
         ) : null}

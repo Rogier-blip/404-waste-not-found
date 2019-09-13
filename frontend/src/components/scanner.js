@@ -6,33 +6,33 @@ class Scanner extends Component {
     this._onDetected = this._onDetected.bind(this)
   }
   componentDidMount() {
-    Quagga.init(
-      {
-        inputStream: {
-          type: "LiveStream",
-          constraints: {
-            width: 640,
-            height: 480,
-            facingMode: "environment", // or user
-          },
+    Quagga.init({
+      inputStream: {
+        type: 'LiveStream',
+        constraints: {
+          width: 640,
+          height: 480,
+          facingMode: 'environment', // or user
         },
-        locator: {
-          patchSize: "medium",
-          halfSample: true,
-        },
-        numOfWorkers: 2,
-        decoder: {
-          readers: ["code_128_reader"],
-        },
-        locate: true,
       },
-      function (err) {
-        if (err) {
-          return console.log(err)
-        }
-        Quagga.start()
+      locator: {
+        patchSize: 'medium',
+        halfSample: true,
+      },
+      numOfWorkers: 2,
+      decoder: {
+        readers: ['ean_reader'],
+      },
+      locate: true,
+    }, function (err) {
+      if (err) {
+        console.log(err);
+        return
       }
-    )
+      console.log("Initialization finished. Ready to start");
+      Quagga.start();
+    });
+    console.log("component did mount.")
     Quagga.onDetected(this._onDetected)
   }
   componentWillUnmount() {
@@ -40,8 +40,8 @@ class Scanner extends Component {
   }
   _onDetected(result) {
     console.log("ok1")
-    this.props.onDetected(result);
-    console.log(result);
+    console.log(result.codeResult.code);
+    // this.props.onDetected(result);
   }
   render() {
     return <div id="interactive" className="viewport" />
