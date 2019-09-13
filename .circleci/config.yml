@@ -27,11 +27,11 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
 
-      - run: |
-        command: |
-          cd backend
-          npm install
-          npm run build
+      - run:
+          command: |
+            cd backend
+            npm install
+            npm run build
 
 workflows:
   version: 2
