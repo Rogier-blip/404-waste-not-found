@@ -11,7 +11,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  gronies: {
+  groenies: {
     type: Number,
     required: true
   }

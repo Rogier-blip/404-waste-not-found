@@ -7,7 +7,7 @@ const productSchema = new Schema({
     type: String,
     required: true
   },
-  gronies: {
+  groenies: {
     type: String,
     required: true
   },
