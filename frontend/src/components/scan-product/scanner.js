@@ -41,8 +41,14 @@ class Scanner extends Component {
   _onDetected(result) {
     console.log("ok1")
     console.log(result.codeResult.code);
+    if (result) {
+      Quagga.offDetected(this._onDetected);
+    }
     // this.props.onDetected(result);
   }
+
+
+
   render() {
     return <div id="interactive" className="viewport" />
   }
