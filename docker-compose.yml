@@ -1,0 +1,37 @@
+version: "2"
+services:
+  backend:
+    build: backend
+    container_name: jumbo-hackaton-server
+    environment:
+      - MONGO_USERNAME=root
+      - MONGO_PASSWORD=example
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server/src:/usr/src/app/src
+    networks:
+      - dev
+    command: sh -c 'npm run start:dev'
+
+  mongodb:
+    container_name: jumbo-hackaton-mongo-db
+    image: mongo:4.1
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+    volumes:
+      - jumbo-hackaton-volume:/data/db
+      - jumbo-hackaton-volume:/data/configdb
+    ports:
+      - "27017:27017"
+      - "28017:28017"
+    networks:
+      - dev
+
+networks:
+  dev:
+
+volumes:
+  jumbo-hackaton-volume:
+

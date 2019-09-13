@@ -1,0 +1,1 @@
+FROM freaz/gatsby:latest
