@@ -9,7 +9,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./server/src:/usr/src/app/src
+      - ./backend/src:/app/src
     networks:
       - dev
     command: sh -c 'npm run start:dev'
