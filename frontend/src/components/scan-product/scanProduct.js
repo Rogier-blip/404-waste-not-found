@@ -36,7 +36,3 @@ class ScanProductComponent extends Component {
   }
 }
 export default ScanProductComponent
-
-// <ul className="results">
-//           {this.state.results.map((result) => (<Result key={result.codeResult.code} result={result} />))}
-//         </ul>

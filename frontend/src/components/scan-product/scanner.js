@@ -32,21 +32,16 @@ class Scanner extends Component {
       console.log("Initialization finished. Ready to start");
       Quagga.start();
     });
-    console.log("component did mount.")
     Quagga.onDetected(this._onDetected)
   }
   componentWillUnmount() {
     Quagga.offDetected(this._onDetected)
   }
   _onDetected(result) {
-    console.log("ok1")
-    console.log(result.codeResult.code);
     if (result) {
       Quagga.offDetected(this._onDetected);
     }
   }
-
-
 
   render() {
     return <div id="interactive" className="viewport" />
