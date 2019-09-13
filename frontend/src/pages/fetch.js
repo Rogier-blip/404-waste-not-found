@@ -42,4 +42,4 @@ class Fetch extends Component {
         );
     }
 }
-export default Fetch
+export default Fetch;
