@@ -1,9 +1,16 @@
 # Build stage
-FROM node:12-alpine as BUILDER
+FROM nikolaik/python-nodejs:python2.7-nodejs12 as BUILDER
+
 WORKDIR /app
-COPY . .
+
+COPY package.json package.json
+
 RUN npm install
+
+COPY . .
+
 RUN npm run build
+
 ENV PORT=3000
 EXPOSE ${PORT}
 
