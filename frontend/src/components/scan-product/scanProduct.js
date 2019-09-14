@@ -16,17 +16,17 @@ class ScanProduct extends Component {
   }
 
   componentDidMount() {
-      this.props.productsService.productIsValid$.subscribe(productIsValid => {
-          if (productIsValid === true) {
-              this.props.productsService.addProductCounter(
-                  this.props.scannedProducts + 1
-              );
-              this.props.navigateToDetails();
-          }
-      })
+    this.props.productsService.productIsValid$.subscribe(productIsValid => {
+      if (productIsValid === true) {
+        this.props.productsService.addProductCounter(
+          this.props.scannedProducts + 1
+        );
+        this.props.navigateToDetails();
+      }
+    })
   }
 
-    onBarcodeReceived = (barcode) => {
+  onBarcodeReceived = (barcode) => {
     this.props.productsService.getProductBasedOnBarcode(barcode);
   };
 
@@ -41,7 +41,7 @@ class ScanProduct extends Component {
   render() {
     return (
       <div className="scan-product-container"
-           style={{maxWidth: 960,  margin: `0 auto`}}>
+        style={{ maxWidth: 960, margin: `0 auto` }}>
         <h1>Scan your code please!</h1>
         <button
           className={`btn btn-primary`}
@@ -56,7 +56,7 @@ class ScanProduct extends Component {
         </button>
 
         {this.state.scanning ? (
-          <Scanner onDetected={this.onBarcodeReceived} />
+          <Scanner onDetected={this.onBarcodeReceived} productsService={this.props.productsService} />
         ) : null}
       </div>
     )
