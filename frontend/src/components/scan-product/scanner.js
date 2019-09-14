@@ -26,7 +26,7 @@ class Scanner extends Component {
         },
         locate: true,
       },
-      function(err) {
+      function (err) {
         if (err) {
           console.log(err)
           return
@@ -41,9 +41,8 @@ class Scanner extends Component {
     Quagga.offDetected(this._onDetected)
   }
   _onDetected(result) {
-    if (result) {
-      console.log(result.codeResult.code)
-      // Quagga.offDetected(this._onDetected);
+    if (result && this.props.productsService.checkForExistanceOfBarcode(result.codeResult.code)) {
+      Quagga.offDetected(this._onDetected);
       this.props.onDetected(result)
     }
   }
