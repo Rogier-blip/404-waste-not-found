@@ -37,6 +37,7 @@ class ProductsBasket extends Component{
                     marginLeft: 100,
                     marginTop: 40,
                 }}
+                onClick={this.props.productsService.addPoints}
             >
                 Checkout
             </button>
