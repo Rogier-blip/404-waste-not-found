@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class ProductsBasket extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     productDetails = [];
 
     constructor(props) {
@@ -15,8 +11,8 @@ class ProductsBasket extends Component {
     }
 
     componentDidMount() {
-        this.props.productsService.scannedProducts$.subscribe( products => {
-            this.setState({ scannedProducts: products});
+        this.props.productsService.scannedProducts$.subscribe(products => {
+            this.setState({ scannedProducts: products });
         })
     }
 
@@ -28,7 +24,7 @@ class ProductsBasket extends Component {
         return <div>
             <ul>
                 {this.state.scannedProducts.map((value, index) => {
-                    return <li style={{listStyleType: 'none'}} key={index}>{value.name}</li>
+                    return <li style={{ listStyleType: 'none' }} key={index}>{value.name}</li>
                 })}
             </ul>
             <button

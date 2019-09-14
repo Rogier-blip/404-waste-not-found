@@ -69,7 +69,8 @@ export default class ProductsService {
     getUserDetails() {
         axios.get('http://localhost:3000/user/get')
             .then(result => {
-                this.userDetails.next(result);
+                console.log(result);
+                this.userDetails$.next(result.data);
             })
             .catch(error => {
                 console.log(error)

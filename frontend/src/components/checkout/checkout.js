@@ -11,8 +11,10 @@ class CheckoutComponent extends Component {
     }
 
     componentDidMount() {
+        this.props.productsService.getUserDetails();
         this.props.productsService.userDetails$.subscribe(user => {
             if (user) {
+                console.log(user);
                 this.setState({
                     firstName: user.firstName,
                     lastName: user.lastName,
