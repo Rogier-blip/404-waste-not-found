@@ -1,6 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class ProductsBasket extends Component{
+class ProductsBasket extends Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return <div>
@@ -13,6 +16,7 @@ class ProductsBasket extends Component{
                     marginLeft: 100,
                     marginTop: 40,
                 }}
+                onClick={this.props.onCheckout}
             >
                 Checkout
             </button>
