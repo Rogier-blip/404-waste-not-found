@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import "./scanProduct.css"
-import Scanner from "./scanner"
+import "../components/scan-product/scanProduct.css"
+import Scanner from "../components/scan-product/scanner"
+import Layout from "../components/layout"
 
 class ScanProductComponent extends Component {
 
@@ -31,16 +32,18 @@ class ScanProductComponent extends Component {
   }
   render() {
     return (
-      <div className="scan-product-container">
-        <h1>Scan your code please!</h1>
-        <button onClick={this._scan}>
-          {this.state.scanning ? "Stop" : "Start"}
-        </button>
+      <Layout>
+        <div className="scan-product-container">
+          <h1>Scan your code please!</h1>
+          <button onClick={this._scan}>
+            {this.state.scanning ? "Stop" : "Start"}
+          </button>
 
-        {this.state.scanning ? (
-          <Scanner onDetected={this.state.onBarcode} />
-        ) : null}
-      </div>
+          {this.state.scanning ? (
+            <Scanner onDetected={this.state.onBarcode} />
+          ) : null}
+        </div>
+      </Layout>
     )
   }
 }
