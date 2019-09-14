@@ -3,8 +3,11 @@ import cors from 'cors';
 import express from 'express';
 
 const app: express.Application = express();
+
 const apiController: express.Router = require('./controllers/api.controller');
 const userController: express.Router = require('./controllers/user.controller');
+const productController: express.Router = require('./controllers/product.controller');
+
 const mongoose = require('mongoose');
 
 app.use(cors());
@@ -13,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', apiController);
 app.use('/user', userController);
+app.use('/product', productController);
 
 app.get("/", (req, res, next) => {
   res.send(`Hello Express TypeScript Starter`);
