@@ -27,7 +27,6 @@ class ScanProductComponent extends Component {
   }
   render() {
     return (
-      // <Layout>
       <div className="scan-product-container">
         <h1>Scan your code please!</h1>
         <button onClick={this._scan}>
@@ -38,7 +37,6 @@ class ScanProductComponent extends Component {
           <Scanner onDetected={this.onBarcodeReceived} />
         ) : null}
       </div>
-      // </Layout>
     )
   }
 }
