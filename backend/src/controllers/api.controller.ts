@@ -19,35 +19,35 @@ apiController.get('/insert-products-in-db', (req: Request, res: Response): void 
       groenies: '10',
       description: 'This corn is fucking amazing. You can fart for ages.',
       img: 'crispy-mais.jpg',
-      barcode: 'YOLO_BARCODE'
+      barcode: '8718452270828'
     },
     {
       name: 'biologische-naturel-fettuccine',
       groenies: '6',
       description: 'Natural spaghetti for your natural fat belly.',
       img: 'biologische-naturel-fettuccine.jpg',
-      barcode: 'YOLO_BARCODE_SPAGHETTI'
+      barcode: '8718452304035'
     },
     {
       name: 'dessert-borden',
       groenies: '3',
       description: 'Wanna eat a dessert you fat ass? Eat this shit.',
       img: 'dessert-borden.jpg',
-      barcode: 'YOLO_BARCODE_DESSERT'
+      barcode: '8718452403035'
     },
     {
       name: 'ecologisch-wc-reiniger',
       groenies: '4',
       description: 'A liquid for your dirty dishes. One drop can wash your entire body as well.',
       img: 'ecologisch-wc-reiniger.jpg',
-      barcode: 'YOLO_BARCODE_REINIGER'
+      barcode: '8718452257492'
     },
     {
       name: 'schuur-sponsen',
       groenies: '9',
       description: 'You can clean your dishes and your ass at the same time with this sponge. Then your dishes will be as brown as never and your ass whiter than ever!',
       img: 'schuur-sponsen.jpg',
-      barcode: 'YOLO_BARCODE_SPONSEN'
+      barcode: '8718449001862'
     }
   ];
 
