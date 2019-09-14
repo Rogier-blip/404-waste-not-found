@@ -7,8 +7,9 @@ const apiController: Router = Router();
 
 apiController.get("/product-details", (req: Request, res: Response): void => {
   const barcode: String = req.body.text;
-  const product = new productSchema(productSchema.find({ barcode: barcode }));
-  res.json(product);
+
+  productSchema.find({barcode})
+    .then((products: any[]) => res.json(products));
 });
 
 apiController.post("/product-scanned", (req: Request, res: Response): void => {
@@ -23,6 +24,18 @@ apiController.post("/product-scanned", (req: Request, res: Response): void => {
     .catch((e: any) => res.send(e))
 
 });
+
+apiController.get("/products", (req: Request, res: Response): void => {
+  const barcode: String = req.body.text;
+
+  const barcodeBasket = new barcodeBasketSchema({barcode});
+
+  barcodeBasket.save()
+    .then(() => res.send('success'))
+    .catch((e: any) => res.send(e))
+
+});
+
 
 apiController.get("/is-there-a-new-product-scanned", (req: Request, res: Response): void => {
   const barcode: String = req.body.text;

@@ -7,7 +7,7 @@
     "watch-ts": "node node_modules/nodemon/bin/nodemon.js --exec ts-node src/server.ts",
     "build": "rm -rf dist && tsc --build src/tsconfig.json",
     "start": "node ./dist/server.js",
-    "start:dev": "nodemon",
+    "start:dev": "./node_modules/nodemon/bin/nodemon.js .",
     "test": "npx jest"
   },
   "keywords": [],
