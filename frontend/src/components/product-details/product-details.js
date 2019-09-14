@@ -18,18 +18,9 @@ class ProductDetails extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.props.productsService.productsCounter$.subscribe(counter => {
-            if (counter) {
-                this.setState({scannedProducts: counter});
-            }
-        })
-    }
-
     render() {
         return (
             <div>
-                <h2 style={{textAlign: "right"}}> total amount: {this.state.scannedProducts}</h2>
                 <h2>{mockedProduct.name}</h2>
                 <div className={"row"}>
                     <div className={"col-6"}>
