@@ -5,14 +5,13 @@ import Footer from './footer';
 import './layout.css';
 
 
-const Layout = ({ children }) => {
+const Layout = ({ children, title }) => {
   return (
     <>
-      <Header siteTitle="Groenie Generator" />
+      <Header siteTitle={title} />
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: 960,
           minHeight: 400,
           padding: `0px 1.0875rem 1.45rem`,
           paddingTop: 0,

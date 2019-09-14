@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import React, {Component} from 'react';
+import Layout from  '../components/layout';
+import ScanProduct from '../components/scan-product/scanProduct';
 import ProductsService from '../services/products.service';
 import ProductDetails from '../components/product-details/product-details';
-import ScanProduct from "../components/scan-product/scanProduct";
+import ProductsBasket from '../components/products-basket/products-basket';
 
 
 class IndexPage extends Component {
@@ -23,31 +23,55 @@ class IndexPage extends Component {
   };
 
   navigateToScanner = () => {
+    this.productsService.productIsValid$.next(false);
     this.setState({ scannerOpened: true });
   };
 
-  render() {
-    if (this.state.scannerOpened) {
-      return <Layout>
-        <SEO title="Home" />
-        <ScanProduct productsService={this.productsService}
-          navigateToDetails={this.navigateToDetails} />
-        <button
-          className={`btn btn-primary`}
-          style={{ background: '#FDC513', color: 'black', borderColor: '#FDC513' }}
-          onClick={() => this.setState({ scannerOpened: false })}
-        >
-          DetailsPage
-                </button>
-      </Layout>
-    } else {
-      return <Layout>
-        <SEO title="Home" />
-        <ProductDetails productsService={this.productsService}
-          navigateToScanner={this.navigateToScanner} />
-      </Layout>
+    componentDidMount() {
+        this.productsService.productsCounter$.subscribe(counter => {
+            if (counter) {
+                this.setState({scannedProducts: counter});
+            }
+        })
     }
-  }
+
+    render() {
+        if (this.state.scannerOpened) {
+            return <Layout title={'Scan Product'}>
+                <div className={'row'}>
+                    <div className={'col-8 offset-2'}>
+                        <ScanProduct productsService={this.productsService}
+                                     navigateToDetails={this.navigateToDetails}
+                                     scannedProducts={this.state.scannedProducts}/>
+                    </div>
+                    <div className={'col-2'}>
+                        <h2 style={{textAlign: "right"}}> total amount: {this.state.scannedProducts}</h2>
+                        <ProductsBasket />
+                    </div>
+                </div>
+                <button
+                    className={`btn btn-primary`}
+                    style={{background: '#FDC513', color: 'black', borderColor: '#FDC513'}}
+                    onClick={() => this.setState({scannerOpened: false})}
+                >
+                    DetailsPage
+                </button>
+            </Layout>
+        } else {
+            return <Layout title={'Product Details'}>
+                <div className={'row'}>
+                    <div className={'col-8 offset-2'}>
+                        <ProductDetails productsService={this.productsService}
+                                        navigateToScanner={this.navigateToScanner}/>
+                    </div>
+                    <div className={'col-2'}>
+                        <h2 style={{textAlign: "right"}}> total amount: {this.state.scannedProducts}</h2>
+                        <ProductsBasket />
+                    </div>
+                </div>
+            </Layout>
+        }
+    }
 }
 
 export default IndexPage;
