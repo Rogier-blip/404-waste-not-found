@@ -19,11 +19,8 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-      console.log(this.props.productsService);
     this.props.productsService.productsCounter$.subscribe(counter => {
-        console.log(counter);
       if (counter) {
-          console.log(counter);
         this.setState({ scannedProducts: counter });
       }
     })
