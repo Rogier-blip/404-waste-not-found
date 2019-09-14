@@ -1,12 +1,12 @@
 import { Request, Response, Router } from "express";
-import {Constants} from '../const';
+import { Constants } from '../const';
 
 const productSchema = require("../models/ProductSchema");
 
 const productController: Router = Router();
 
-productController.get("/details", (req: Request, res: Response): void => {
-  const barcode: String = req.body.text;
+productController.get("/details/:text", (req: Request, res: Response): void => {
+  const barcode: String = req.params.text;
 
   productSchema.find({ barcode }).then((products: any[]) => res.json(products));
 });
