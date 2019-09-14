@@ -66,4 +66,12 @@ productController.post(
   }
 );
 
+productController.get("/barcodes", (req: Request, res: Response): void => {
+  productSchema.find().then((products: any[]) => {
+    const barcodes = products.map(product => product.barcode);
+    res.json(barcodes);
+  });
+});
+
+
 module.exports = productController;
