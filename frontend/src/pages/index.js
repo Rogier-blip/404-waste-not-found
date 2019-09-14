@@ -1,53 +1,64 @@
-import React, { Component } from 'react';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import ProductsService from '../services/products.service';
-import ProductDetails from '../components/product-details/product-details';
-import ScanProduct from "../components/scan-product/scanProduct";
-
+import React, { Component } from "react"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import ProductsService from "../services/products.service"
+import ProductDetails from "../components/product-details/product-details"
+import ScanProduct from "../components/scan-product/scanProduct"
 
 class IndexPage extends Component {
-
-  productsService = ProductsService.getInstance();
+  productsService = ProductsService.getInstance()
 
   constructor() {
-    super();
+    super()
     this.state = {
       scannerOpened: true,
       scannedProducts: 0,
-    };
+    }
+    this.productsService.getBarcodes()
   }
 
   navigateToDetails = () => {
-    this.setState({ scannerOpened: false });
-  };
+    this.setState({ scannerOpened: false })
+  }
 
   navigateToScanner = () => {
-    this.setState({ scannerOpened: true });
-  };
+    this.setState({ scannerOpened: true })
+  }
 
   render() {
     if (this.state.scannerOpened) {
-      return <Layout>
-        <SEO title="Home" />
-        <ScanProduct productsService={this.productsService}
-          navigateToDetails={this.navigateToDetails} />
-        <button
-          className={`btn btn-primary`}
-          style={{ background: '#FDC513', color: 'black', borderColor: '#FDC513' }}
-          onClick={() => this.setState({ scannerOpened: false })}
-        >
-          DetailsPage
-                </button>
-      </Layout>
+      return (
+        <Layout>
+          <SEO title="Home" />
+          <ScanProduct
+            productsService={this.productsService}
+            navigateToDetails={this.navigateToDetails}
+          />
+          <button
+            className={`btn btn-primary`}
+            style={{
+              background: "#FDC513",
+              color: "black",
+              borderColor: "#FDC513",
+            }}
+            onClick={() => this.setState({ scannerOpened: false })}
+          >
+            DetailsPage
+          </button>
+        </Layout>
+      )
     } else {
-      return <Layout>
-        <SEO title="Home" />
-        <ProductDetails productsService={this.productsService}
-          navigateToScanner={this.navigateToScanner} />
-      </Layout>
+      return (
+        <Layout>
+          <SEO title="Home" />
+          <ProductDetails
+            productsService={this.productsService}
+            navigateToScanner={this.navigateToScanner}
+          />
+        </Layout>
+      )
     }
   }
 }
 
-export default IndexPage;
+export default IndexPage

@@ -3,20 +3,19 @@ import "./scanProduct.css"
 import Scanner from "./scanner"
 
 class ScanProductComponent extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
       scanning: false,
       results: [],
-
     }
     this._scan = this._scan.bind(this)
     this._onDetected = this._onDetected.bind(this)
   }
 
-  onBarcodeReceived = (barcode) => {
-    this.props.productsService.getProductBasedOnBarcode(barcode);
+  onBarcodeReceived = barcode => {
+    console.log("ok")
+    this.props.productsService.getProductBasedOnBarcode(barcode)
   }
 
   _scan() {
