@@ -76,4 +76,20 @@ export default class ProductsService {
             })
     }
 
+    addPoints() {
+        let totalPoints = 0;
+        ProductsService.instance.scannedProducts$.subscribe(scannedProducts => {
+            scannedProducts.forEach(product => {
+                totalPoints += Number(product.groenies);
+            });
+
+            axios.post('http://localhost:3000/user/collect-groenies/12345/' + totalPoints.toString())
+                .then(result => {
+                    console.log(result);
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        });
+    }
 }

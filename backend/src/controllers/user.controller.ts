@@ -14,7 +14,7 @@ userController.post('/collect-groenies/:userId/:groenies', async (req: Request, 
 
   await userSchema.findOneAndUpdate({userId}, {groenies: totalGroenies});
 
-  res.json('total groenies added to user: ' + totalGroenies);
+  res.json(totalGroenies);
 });
 
 userController.get('/earn-groenies/:userId', async (req: Request, res: Response): Promise<void> => {
