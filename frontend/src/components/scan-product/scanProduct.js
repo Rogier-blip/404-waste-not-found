@@ -15,6 +15,10 @@ class ScanProduct extends Component {
     this._onDetected = this._onDetected.bind(this);
   }
 
+  onBarcodeReceived = (barcode) => {
+    this.props.productsService.getProductBasedOnBarcode(barcode);
+  }
+
   _scan() {
     this.props.productsService.addProductCounter(
       this.props.scannedProducts + 1
@@ -44,7 +48,7 @@ class ScanProduct extends Component {
         </button>
 
         {this.state.scanning ? (
-          <Scanner onDetected={this.state._onDetected} />
+          <Scanner onDetected={this.onBarcodeReceived} />
         ) : null}
       </div>
     )

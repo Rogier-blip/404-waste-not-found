@@ -6,25 +6,25 @@ import ProductDetails from '../components/product-details/product-details';
 import ProductsBasket from '../components/products-basket/products-basket';
 
 
-class IndexPage extends Component{
+class IndexPage extends Component {
 
-    productsService = ProductsService.getInstance();
+  productsService = ProductsService.getInstance();
 
-    constructor() {
-        super();
-        this.state = {
-            scannerOpened: true,
-            scannedProducts: 0,
-        };
-    }
-
-    navigateToDetails = () => {
-        this.setState({ scannerOpened: false});
+  constructor() {
+    super();
+    this.state = {
+      scannerOpened: true,
+      scannedProducts: 0,
     };
+  }
 
-    navigateToScanner = () => {
-        this.setState({ scannerOpened: true});
-    };
+  navigateToDetails = () => {
+    this.setState({ scannerOpened: false });
+  };
+
+  navigateToScanner = () => {
+    this.setState({ scannerOpened: true });
+  };
 
     componentDidMount() {
         this.productsService.productsCounter$.subscribe(counter => {
@@ -74,4 +74,3 @@ class IndexPage extends Component{
 }
 
 export default IndexPage;
-
