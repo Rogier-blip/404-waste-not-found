@@ -14,6 +14,15 @@ class ScanProductComponent extends Component {
     this._onDetected = this._onDetected.bind(this)
   }
 
+  onBarcodeReceived = (barcode) => {
+    console.log('ok');
+    console.log(barcode);
+    this.setState({
+      scanning: !this.state.scanning,
+      results: this.state.results.push(barcode)
+    })
+  }
+
   _scan() {
     this.setState({ scanning: !this.state.scanning })
   }
@@ -29,7 +38,7 @@ class ScanProductComponent extends Component {
         </button>
 
         {this.state.scanning ? (
-          <Scanner onDetected={this.state._onDetected} />
+          <Scanner onDetected={this.state.onBarcode} />
         ) : null}
       </div>
     )
