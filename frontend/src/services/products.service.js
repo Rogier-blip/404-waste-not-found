@@ -1,11 +1,12 @@
-import {BehaviorSubject} from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import axios from "axios";
 
 export default class ProductsService {
+    productsScanned = [];
 
-    instance =  ProductsService;
+    instance = ProductsService;
 
-    static getInstance()
-    {
+    static getInstance() {
         if (!ProductsService.instance) {
             ProductsService.instance = new ProductsService();
         }
@@ -18,4 +19,17 @@ export default class ProductsService {
     addProductCounter(value) {
         this.productsCounter$.next(value);
     }
+
+    getProductBasedOnBarcode(barcode) {
+        axios.get("http://localhost:3000/product/details/" + barcode.codeResult.code)
+            .then(result => {
+                if (result.data.length > 0) {
+                    this.productsScanned.push(result.data[0]);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
 }

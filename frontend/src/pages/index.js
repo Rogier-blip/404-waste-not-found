@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import ScanProduct from '../components/scan-product/scanProduct';
 import ProductsService from '../services/products.service';
 import ProductDetails from '../components/product-details/product-details';
+import ScanProduct from "../components/scan-product/scanProduct";
 
 
 class IndexPage extends Component {
