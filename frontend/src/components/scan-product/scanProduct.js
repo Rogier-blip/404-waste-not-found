@@ -28,8 +28,6 @@ class ScanProduct extends Component {
       this.state.scannedProducts + 1
     );
     this.setState({ scanning: !this.state.scanning });
-    // this.props.navigateToDetails();
-
   }
 
   _onDetected(result) {

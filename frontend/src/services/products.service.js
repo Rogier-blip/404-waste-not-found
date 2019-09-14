@@ -4,7 +4,6 @@ export default class ProductsService {
 
     instance =  ProductsService;
 
-
     static getInstance()
     {
         if (!ProductsService.instance) {
@@ -13,7 +12,6 @@ export default class ProductsService {
 
         return ProductsService.instance;
     }
-
 
     productsCounter$ = new BehaviorSubject(null);
 
