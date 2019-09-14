@@ -23,6 +23,10 @@ class IndexPage extends Component{
         this.setState({ scannerOpened: false});
     };
 
+    navigateToScanner = () => {
+        this.setState({ scannerOpened: true});
+    };
+
     render() {
         if (this.state.scannerOpened) {
             return <Layout>
@@ -40,7 +44,8 @@ class IndexPage extends Component{
         } else {
             return <Layout>
                 <SEO title="Home"/>
-                <ProductDetails productsService={this.productsService}/>
+                <ProductDetails productsService={this.productsService}
+                                navigateToScanner={this.navigateToScanner}/>
                 <Link
                     className={`btn btn-primary`}
                     style={{background: '#FDC513', color: 'black', borderColor: '#FDC513'}}

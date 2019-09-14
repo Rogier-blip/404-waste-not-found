@@ -29,7 +29,20 @@ class ProductDetails extends React.Component {
   render() {
     return (
       <div>
-        <h2 style={{ textAlign: "right" }}> total amount: {this.state.scannedProducts}</h2>
+          <button
+              className={`btn btn-primary`}
+              style={{
+                  background: "#FDC513",
+                  color: "black",
+                  borderColor: "#FDC513",
+                  marginLeft: 400,
+                  marginTop: 40,
+              }}
+              onClick={this.props.navigateToScanner}
+          >
+              Scan another product
+          </button>
+          <h2 style={{ textAlign: "right" }}> total amount: {this.state.scannedProducts}</h2>
         <h2>Product: {mockedProduct.name}</h2>
         <div className={"row"}>
           <div className={"col-6"}>
