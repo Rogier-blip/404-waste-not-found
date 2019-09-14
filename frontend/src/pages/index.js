@@ -8,7 +8,7 @@ import CheckoutComponent from '../components/checkout/checkout';
 
 
 class IndexPage extends Component {
-  productsService = ProductsService.getInstance()
+  productsService = ProductsService.getInstance();
 
   constructor() {
     super();
@@ -23,7 +23,7 @@ class IndexPage extends Component {
 
   navigateToDetails = () => {
     this.setState({ scannerOpened: false })
-  }
+  };
 
   navigateToScanner = () => {
     this.productsService.productIsValid$.next(false);
@@ -52,9 +52,9 @@ class IndexPage extends Component {
   }
 
   componentDidMount() {
-    this.productsService.productsCounter$.subscribe(counter => {
-      if (counter) {
-        this.setState({ scannedProducts: counter });
+    this.productsService.scannedProducts$.subscribe(products => {
+      if (products) {
+        this.setState({ scannedProducts: products.length });
       }
     })
   }
@@ -70,7 +70,7 @@ class IndexPage extends Component {
           </div>
           <div className={'col-2'}>
             <h2 style={{ textAlign: "right" }}> total amount: {this.state.scannedProducts}</h2>
-            <ProductsBasket onCheckout={this.navigateToCheckout} />
+            <ProductsBasket onCheckout={this.navigateToCheckout} productsService={this.productsService} />
           </div>
         </div>
 
@@ -85,7 +85,7 @@ class IndexPage extends Component {
           </div>
           <div className={'col-2'}>
             <h2 style={{ textAlign: "right" }}> total amount: {this.state.scannedProducts}</h2>
-            <ProductsBasket onCheckout={this.navigateToCheckout} />
+            <ProductsBasket onCheckout={this.navigateToCheckout} productsService={this.productsService} />
           </div>
         </div>
       </Layout>
@@ -100,11 +100,3 @@ class IndexPage extends Component {
 
 export default IndexPage
 
-
-// <button
-//           className={`btn btn-primary`}
-//           style={{ background: '#FDC513', color: 'black', borderColor: '#FDC513' }}
-//           onClick={() => this.setState({ scannerOpened: false })}
-//         >
-//           DetailsPage
-//                 </button>
