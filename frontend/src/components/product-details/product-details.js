@@ -28,7 +28,7 @@ class ProductDetails extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{maxWidth: 960,  margin: `0 auto`}}>
           <button
               className={`btn btn-primary`}
               style={{
@@ -63,18 +63,6 @@ class ProductDetails extends React.Component {
             />
           </div>
         </div>
-        <button
-          className={`btn btn-primary`}
-          style={{
-            background: "#FDC513",
-            color: "black",
-            borderColor: "#FDC513",
-            marginLeft: 400,
-            marginTop: 40,
-          }}
-        >
-          Checkout
-        </button>
       </div>
     )
   }

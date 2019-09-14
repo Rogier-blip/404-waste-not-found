@@ -4,6 +4,7 @@ import SEO from '../components/seo';
 import ScanProduct from '../components/scan-product/scanProduct';
 import ProductsService from '../services/products.service';
 import ProductDetails from '../components/product-details/product-details';
+import ProductsBasket from '../components/products-basket/products-basket';
 
 
 class IndexPage extends Component{
@@ -29,9 +30,15 @@ class IndexPage extends Component{
     render() {
         if (this.state.scannerOpened) {
             return <Layout>
-                <SEO title="Home"/>
-                <ScanProduct productsService={this.productsService}
-                             navigateToDetails={this.navigateToDetails}/>
+                <div className={'row'}>
+                    <div className={'col-6 offset-2'}>
+                        <ScanProduct productsService={this.productsService}
+                                     navigateToDetails={this.navigateToDetails}/>
+                    </div>
+                    <div className={'col-4'}>
+                        <ProductsBasket />
+                    </div>
+                </div>
                 <button
                     className={`btn btn-primary`}
                     style={{background: '#FDC513', color: 'black', borderColor: '#FDC513'}}
@@ -42,9 +49,15 @@ class IndexPage extends Component{
             </Layout>
         } else {
             return <Layout>
-                <SEO title="Home"/>
-                <ProductDetails productsService={this.productsService}
-                                navigateToScanner={this.navigateToScanner}/>
+                <div className={'row'}>
+                    <div className={'col-6 offset-2'}>
+                        <ProductDetails productsService={this.productsService}
+                                        navigateToScanner={this.navigateToScanner}/>
+                    </div>
+                    <div className={'col-4'}>
+                        <ProductsBasket />
+                    </div>
+                </div>
             </Layout>
         }
     }

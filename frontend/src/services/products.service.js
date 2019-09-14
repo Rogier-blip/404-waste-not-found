@@ -14,8 +14,13 @@ export default class ProductsService {
     }
 
     productsCounter$ = new BehaviorSubject(null);
+    scannedProducts$ = new BehaviorSubject([]);
 
     addProductCounter(value) {
         this.productsCounter$.next(value);
+    }
+
+    addProductToBasket(products) {
+        this.productsCounter$.next(products);
     }
 }

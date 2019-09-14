@@ -36,7 +36,8 @@ class ScanProduct extends Component {
 
   render() {
     return (
-      <div className="scan-product-container">
+      <div className="scan-product-container"
+           style={{maxWidth: 960,  margin: `0 auto`}}>
         <h2 style={{ textAlign: "right" }}>
           {" "}
           total amount: {this.state.scannedProducts}
