@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Layout from  '../components/layout';
-import SEO from '../components/seo';
 import ScanProduct from '../components/scan-product/scanProduct';
 import ProductsService from '../services/products.service';
 import ProductDetails from '../components/product-details/product-details';
@@ -27,15 +26,25 @@ class IndexPage extends Component{
         this.setState({ scannerOpened: true});
     };
 
+    componentDidMount() {
+        this.productsService.productsCounter$.subscribe(counter => {
+            if (counter) {
+                this.setState({scannedProducts: counter});
+            }
+        })
+    }
+
     render() {
         if (this.state.scannerOpened) {
-            return <Layout>
+            return <Layout title={'Scan Product'}>
                 <div className={'row'}>
-                    <div className={'col-6 offset-2'}>
+                    <div className={'col-8 offset-2'}>
                         <ScanProduct productsService={this.productsService}
-                                     navigateToDetails={this.navigateToDetails}/>
+                                     navigateToDetails={this.navigateToDetails}
+                                     scannedProducts={this.state.scannedProducts}/>
                     </div>
-                    <div className={'col-4'}>
+                    <div className={'col-2'}>
+                        <h2 style={{textAlign: "right"}}> total amount: {this.state.scannedProducts}</h2>
                         <ProductsBasket />
                     </div>
                 </div>
@@ -48,13 +57,14 @@ class IndexPage extends Component{
                 </button>
             </Layout>
         } else {
-            return <Layout>
+            return <Layout title={'Product Details'}>
                 <div className={'row'}>
-                    <div className={'col-6 offset-2'}>
+                    <div className={'col-8 offset-2'}>
                         <ProductDetails productsService={this.productsService}
                                         navigateToScanner={this.navigateToScanner}/>
                     </div>
-                    <div className={'col-4'}>
+                    <div className={'col-2'}>
+                        <h2 style={{textAlign: "right"}}> total amount: {this.state.scannedProducts}</h2>
                         <ProductsBasket />
                     </div>
                 </div>

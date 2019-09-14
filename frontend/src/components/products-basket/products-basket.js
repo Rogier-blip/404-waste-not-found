@@ -10,7 +10,7 @@ class ProductsBasket extends Component{
                     background: "#FDC513",
                     color: "black",
                     borderColor: "#FDC513",
-                    marginLeft: 400,
+                    marginLeft: 100,
                     marginTop: 40,
                 }}
             >

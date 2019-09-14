@@ -15,17 +15,9 @@ class ScanProduct extends Component {
     this._onDetected = this._onDetected.bind(this);
   }
 
-  componentDidMount() {
-    this.props.productsService.productsCounter$.subscribe(counter => {
-      if (counter) {
-        this.setState({ scannedProducts: counter })
-      }
-    })
-  }
-
   _scan() {
     this.props.productsService.addProductCounter(
-      this.state.scannedProducts + 1
+      this.props.scannedProducts + 1
     );
     this.setState({ scanning: !this.state.scanning });
   }
@@ -38,10 +30,6 @@ class ScanProduct extends Component {
     return (
       <div className="scan-product-container"
            style={{maxWidth: 960,  margin: `0 auto`}}>
-        <h2 style={{ textAlign: "right" }}>
-          {" "}
-          total amount: {this.state.scannedProducts}
-        </h2>
         <h1>Scan your code please!</h1>
         <button
           className={`btn btn-primary`}
