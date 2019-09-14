@@ -28,12 +28,14 @@ class ScanProductComponent extends Component {
       barcode: null
     };
 
-    axios.get("/product/details/",
+    axios.get("product/details/",
       barcode.codeResult.code
     ).then(result => {
+      console.log('success')
       console.log(result);
     })
       .catch(error => {
+        console.log("error")
         console.log(error);
       });
     this.setState({
