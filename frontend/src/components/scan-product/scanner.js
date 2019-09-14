@@ -44,7 +44,6 @@ class Scanner extends Component {
       this.props.onDetected(result);
     }
   }
-
   render() {
     return <div id="interactive" className="viewport" />
   }

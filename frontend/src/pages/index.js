@@ -1,18 +1,14 @@
 import React from 'react';
 import Layout from '../components/layout';
-import SEO from '../components/seo';
-import ScanProductComponent from "./scanProduct";
 import { Link } from 'gatsby';
+import cameraLogo from '../images/camera.png';
+import "../components/index.css"
 
 const IndexPage = () => (
   <Layout>
-    <Link to="/scanProduct">
-      Scan now.
+    <Link className="link-container" to="/scanProduct"><img style={{ margin: 0 }} src={cameraLogo} alt="logo" width="150px" height="150px" />
     </Link>
-  </Layout>
+  </Layout >
 );
 
 export default IndexPage;
-
-// <ScanProductComponent></ScanProductComponent>
-// 
