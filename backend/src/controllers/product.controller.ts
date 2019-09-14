@@ -1,7 +1,6 @@
 import {Request, Response, Router} from 'express';
 
 const productSchema = require('../models/ProductSchema');
-const barcodeBasketSchema = require('../models/BarcodeBasketSchema');
 
 const apiController: Router = Router();
 
@@ -56,17 +55,6 @@ apiController.post('/insert-all', async (req: Request, res: Response): Promise<v
   }
 
   res.json('all products are correctly inserted');
-});
-
-apiController.get('/products', (req: Request, res: Response): void => {
-  const barcode: String = req.body.text;
-
-  const barcodeBasket = new barcodeBasketSchema({barcode});
-
-  barcodeBasket.save()
-    .then(() => res.send('success'))
-    .catch((e: any) => res.send(e))
-
 });
 
 module.exports = apiController;

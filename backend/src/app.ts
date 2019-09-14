@@ -4,7 +4,6 @@ import express from 'express';
 
 const app: express.Application = express();
 
-const apiController: express.Router = require('./controllers/api.controller');
 const userController: express.Router = require('./controllers/user.controller');
 const productController: express.Router = require('./controllers/product.controller');
 
@@ -14,7 +13,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', apiController);
 app.use('/user', userController);
 app.use('/product', productController);
 
