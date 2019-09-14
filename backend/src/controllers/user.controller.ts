@@ -31,7 +31,6 @@ userController.get('/earn-groenies/:userId', async (req: Request, res: Response)
   QRCode.toDataURL(earnedGroenies.toString(), function (err: Error, url: string) {
     res.json(url);
   });
-
   // await userSchema.findOneAndUpdate({userId}, {groenies: 0});
 });
 
@@ -47,5 +46,9 @@ userController.post('/insert', (req: Request, res: Response): void => {
     .then(() => res.json('user saved'));
 });
 
+userController.get('/get', (req: Request, res: Response): void => {
+  userSchema.find()
+    .then((users: any[]) => res.json(users[0]));
+});
 
 module.exports = userController;
