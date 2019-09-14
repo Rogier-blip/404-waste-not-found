@@ -101,7 +101,7 @@ export default class ProductsService {
 
             axios.post('http://localhost:3000/user/collect-groenies/12345/' + totalPoints.toString())
                 .then(result => {
-                    console.log(result);
+                    this.getUserDetails();
                 })
                 .catch(error => {
                     console.log(error)
