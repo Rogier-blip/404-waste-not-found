@@ -7,20 +7,20 @@ import ProductsBasket from '../components/products-basket/products-basket';
 
 
 class IndexPage extends Component {
-  productsService = ProductsService.getInstance()
+  productsService = ProductsService.getInstance();
 
   constructor() {
     super();
     this.state = {
       scannerOpened: true,
       scannedProducts: 0,
-    }
+    };
     this.productsService.getBarcodes()
   }
 
   navigateToDetails = () => {
     this.setState({ scannerOpened: false })
-  }
+  };
 
   navigateToScanner = () => {
     this.productsService.productIsValid$.next(false);
@@ -28,9 +28,9 @@ class IndexPage extends Component {
   };
 
   componentDidMount() {
-    this.productsService.productsCounter$.subscribe(counter => {
-      if (counter) {
-        this.setState({ scannedProducts: counter });
+    this.productsService.scannedProducts$.subscribe(products => {
+      if (products) {
+        this.setState({ scannedProducts: products.length });
       }
     })
   }
@@ -46,16 +46,9 @@ class IndexPage extends Component {
           </div>
           <div className={'col-2'}>
             <h2 style={{ textAlign: "right" }}> total amount: {this.state.scannedProducts}</h2>
-            <ProductsBasket />
+            <ProductsBasket productsService={this.productsService}/>
           </div>
         </div>
-        <button
-          className={`btn btn-primary`}
-          style={{ background: '#FDC513', color: 'black', borderColor: '#FDC513' }}
-          onClick={() => this.setState({ scannerOpened: false })}
-        >
-          DetailsPage
-                </button>
       </Layout>
     } else {
       return <Layout title={'Product Details'}>
@@ -66,7 +59,7 @@ class IndexPage extends Component {
           </div>
           <div className={'col-2'}>
             <h2 style={{ textAlign: "right" }}> total amount: {this.state.scannedProducts}</h2>
-            <ProductsBasket />
+            <ProductsBasket productsService={this.productsService}/>
           </div>
         </div>
       </Layout>

@@ -2,9 +2,9 @@ import { BehaviorSubject } from "rxjs"
 import axios from "axios"
 
 export default class ProductsService {
-    productsScanned = []
-    barcodes = []
-    instance = ProductsService
+    productsScanned = [];
+    barcodes = [];
+    instance = ProductsService;
 
 
     static getInstance() {
