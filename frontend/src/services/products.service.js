@@ -2,9 +2,10 @@ import { BehaviorSubject } from "rxjs"
 import axios from "axios"
 
 export default class ProductsService {
-    productsScanned = [];
-    barcodes = [];
-    instance = ProductsService;
+    productsScanned = []
+    barcodes = []
+    instance = ProductsService
+    userDetails;
 
 
     static getInstance() {
@@ -19,6 +20,11 @@ export default class ProductsService {
     productsCounter$ = new BehaviorSubject(null);
     productIsValid$ = new BehaviorSubject(false);
     scannedProducts$ = new BehaviorSubject([]);
+    userDetails$ = new BehaviorSubject({
+        firstName: "",
+        lastName: "",
+        groenies: "",
+    });
 
     addProductCounter(value) {
         this.productsCounter$.next(value)
@@ -54,6 +60,16 @@ export default class ProductsService {
                 } else {
                     this.productIsValid$.next(false);
                 }
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    getUserDetails() {
+        axios.get('http://localhost:3000/user/get')
+            .then(result => {
+                this.userDetails$.next(result.data);
             })
             .catch(error => {
                 console.log(error)
