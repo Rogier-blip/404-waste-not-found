@@ -17,6 +17,24 @@ userController.post('/collect-groenies/:userId/:groenies', async (req: Request, 
   res.json('total groenies added to user: ' + totalGroenies);
 });
 
+userController.get('/earn-groenies/:userId', async (req: Request, res: Response): Promise<void> => {
+  const userId: String = req.params.userId;
+
+  const user = await userSchema.findOne({userId});
+  const earnedGroenies = user.groenies;
+
+
+  console.log(earnedGroenies);
+
+  const QRCode = require('qrcode');
+
+  QRCode.toDataURL(earnedGroenies.toString(), function (err: Error, url: string) {
+    res.json(url);
+  });
+
+  // await userSchema.findOneAndUpdate({userId}, {groenies: 0});
+});
+
 userController.post('/insert', (req: Request, res: Response): void => {
   const user = {
     userId: '12345',
