@@ -20,6 +20,8 @@ export default class ProductsService {
     productsCounter$ = new BehaviorSubject(null);
     productIsValid$ = new BehaviorSubject(false);
     scannedProducts$ = new BehaviorSubject([]);
+    qrSubject$ = new BehaviorSubject("");
+
     userDetails$ = new BehaviorSubject({
         firstName: "",
         lastName: "",
@@ -72,6 +74,20 @@ export default class ProductsService {
                 this.userDetails$.next(result.data);
             })
             .catch(error => {
+                console.log(error);
+            })
+    }
+
+    onQrClick() {
+        console.log('ok');
+        axios.get('http://localhost:3000/user/earn-groenies/' + "12345")
+            .then(result => {
+                if (result) {
+                    ProductsService.instance.qrSubject$.next(result.data);
+
+                }
+            })
+            .catch(error => {
                 console.log(error)
             })
     }
@@ -85,7 +101,7 @@ export default class ProductsService {
 
             axios.post('http://localhost:3000/user/collect-groenies/12345/' + totalPoints.toString())
                 .then(result => {
-                    console.log(result);
+                    this.getUserDetails();
                 })
                 .catch(error => {
                     console.log(error)
