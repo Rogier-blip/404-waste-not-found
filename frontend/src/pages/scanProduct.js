@@ -18,30 +18,22 @@ class ScanProductComponent extends Component {
   }
 
   onBarcodeReceived = (barcode) => {
-    console.log('ok');
-    console.log(barcode);
-    const product = {
-      type: null,
-      groenies: null,
-      description: null,
-      img: null,
-      barcode: null
-    };
-
-    axios.get("product/details/",
-      barcode.codeResult.code
-    ).then(result => {
-      console.log('success')
-      console.log(result);
+    axios.get("http://localhost:3000/product/details/", {
+      params: {
+        "text": barcode.codeResult.code
+      }
     })
+      .then(result => {
+        if (result.data.length > 0) {
+          this.setState({
+            scanning: !this.state.scanning,
+            results: this.state.results.push(result)
+          })
+        }
+      })
       .catch(error => {
-        console.log("error")
         console.log(error);
       });
-    this.setState({
-      scanning: !this.state.scanning,
-      results: this.state.results.push(product)
-    })
   }
 
   _scan() {

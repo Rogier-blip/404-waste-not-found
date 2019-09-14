@@ -39,7 +39,6 @@ class Scanner extends Component {
   }
   _onDetected(result) {
     if (result) {
-      console.log(result);
       Quagga.offDetected(this._onDetected);
       this.props.onDetected(result);
     }
