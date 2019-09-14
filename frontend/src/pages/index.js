@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Layout from  '../components/layout';
 import SEO from '../components/seo';
 import ScanProduct from '../components/scan-product/scanProduct';
-import { Link } from 'gatsby';
 import ProductsService from '../services/products.service';
 import ProductDetails from '../components/product-details/product-details';
 
@@ -46,13 +45,6 @@ class IndexPage extends Component{
                 <SEO title="Home"/>
                 <ProductDetails productsService={this.productsService}
                                 navigateToScanner={this.navigateToScanner}/>
-                <Link
-                    className={`btn btn-primary`}
-                    style={{background: '#FDC513', color: 'black', borderColor: '#FDC513'}}
-                    to='/details-page/'
-                >
-                    Product Details
-                </Link>
             </Layout>
         }
     }
