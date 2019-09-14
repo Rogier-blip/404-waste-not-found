@@ -15,19 +15,27 @@ class ScanProduct extends Component {
     this._onDetected = this._onDetected.bind(this);
   }
 
-  onBarcodeReceived = (barcode) => {
-    this.props.productsService.getProductBasedOnBarcode(barcode);
+  componentDidMount() {
+      this.props.productsService.productIsValid$.subscribe(productIsValid => {
+          if (productIsValid === true) {
+              this.props.productsService.addProductCounter(
+                  this.props.scannedProducts + 1
+              );
+              this.props.navigateToDetails();
+          }
+      })
   }
 
+    onBarcodeReceived = (barcode) => {
+    this.props.productsService.getProductBasedOnBarcode(barcode);
+  };
+
   _scan() {
-    this.props.productsService.addProductCounter(
-      this.props.scannedProducts + 1
-    );
     this.setState({ scanning: !this.state.scanning });
   }
 
   _onDetected(result) {
-    this.setState({ results: this.state.results.concat([result]) })
+    this.setState({ results: this.state.results.concat([result]) });
   }
 
   render() {

@@ -23,6 +23,7 @@ class IndexPage extends Component {
   };
 
   navigateToScanner = () => {
+    this.productsService.productIsValid$.next(false);
     this.setState({ scannerOpened: true });
   };
 
