@@ -35,7 +35,6 @@ class IndexPage extends Component {
   };
 
   navigateToCheckout = () => {
-    console.log('ok')
     this.setState({
       scannerOpened: false,
       detailsOpened: false,
